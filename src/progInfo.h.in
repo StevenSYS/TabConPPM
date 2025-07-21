@@ -1,0 +1,12 @@
+#ifndef __PROGINFO__
+#define __PROGINFO__
+
+#define PROGRAM_NAME "@PROJECT_NAME@"
+#define PROGRAM_VERSION "@PROJECT_VERSION@"
+
+#define DEFAULT_SCALE 70
+
+#define LENGTH_FILENAME 255
+#define LENGTH_HASHSTRING 255
+
+#endif

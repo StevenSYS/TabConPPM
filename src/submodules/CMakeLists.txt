@@ -1,0 +1,1 @@
+add_library(SHA1 "sha1/sha1.c")
