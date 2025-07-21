@@ -36,14 +36,15 @@ endif()
 
 file(GLOB SOURCE_FILES "src/*.c")
 
+include_directories(
+	"src/submodules"
+	"src/libTabCon"
+)
+
 add_subdirectory(src/submodules)
 add_subdirectory(src/libTabCon)
 
 if(NOT BUILD_ONLY_LIBRARY)
-	include_directories(
-		"src/submodules"
-		"src/libTabCon"
-	)
 	
 	configure_file(src/progInfo.h.in ${CMAKE_CURRENT_SOURCE_DIR}/src/progInfo.h @ONLY)
 	

@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <sha1.h>
+#include <sha1/sha1.h>
 
 #include "tabCon.h"
 
