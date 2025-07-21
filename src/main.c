@@ -15,11 +15,11 @@ char scale = DEFAULT_SCALE;
 tabCon_t tabCon;
 
 #ifdef MISSING_L_FUNCS
-	#define strlcpy(_src, _dst, _dstLen) \
-		strncpy(_src, _dst, _dstLen - 1); \
+	#define strlcpy(_src, _dst, _len) \
+		strncpy(_src, _dst, _len - 1); \
 		_src[sizeof(_src) - 1] = 0;
-	#define strlcat(_src, _dst, _dstLen) \
-		strncat(_src, _dst, _dstLen - 1); \
+	#define strlcat(_src, _dst, _len) \
+		strncat(_src, _dst, _len - 1); \
 		_src[sizeof(_src) - 1] = 0;
 #endif
 
