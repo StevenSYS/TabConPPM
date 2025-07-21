@@ -14,6 +14,15 @@ char scale = DEFAULT_SCALE;
 
 tabCon_t tabCon;
 
+#ifdef MISSING_L_FUNCS
+	#define strlcpy(_src, _dst, _dstLen) \
+		strncpy(_src, _dst, _dstLen - 1); \
+		_src[sizeof(_src) - 1] = 0;
+	#define strlcat(_src, _dst, _dstLen) \
+		strncat(_src, _dst, _dstLen - 1); \
+		_src[sizeof(_src) - 1] = 0;
+#endif
+
 char loadArgs(
 	int argc,
 	char *argv[]
@@ -27,7 +36,11 @@ char loadArgs(
 					if (strcmp(argv[i], "STRINGNAME") != 0) {
 						if (strlen(argv[i]) < LENGTH_FILENAME) {
 							customFileName = 1;
-							strcpy(filename, argv[i]);
+							strlcpy(
+								filename,
+								argv[i],
+								LENGTH_FILENAME
+							);
 						}
 					}
 					break;
@@ -38,9 +51,17 @@ char loadArgs(
 					break;
 				default:
 					if (i > 3) {
-						strcat(hashString, " ");
+						strlcat(
+							hashString,
+							" ",
+							LENGTH_HASHSTRING
+						);
 					}
-					strcat(hashString, argv[i]);
+					strlcat(
+						hashString,
+						argv[i],
+						LENGTH_HASHSTRING
+					);
 					break;
 			}
 		}
@@ -51,7 +72,11 @@ char loadArgs(
 		char randomChar[2];
 		for (unsigned char i = 0; i < 9; i++) {
 			snprintf(randomChar, 2, "%u", rand() % 9);
-			strcat(hashString, randomChar);
+			strlcat(
+				hashString,
+				randomChar,
+				LENGTH_HASHSTRING
+			);
 		}
 	}
 	
@@ -60,10 +85,18 @@ char loadArgs(
 	}
 	
 	if (!customFileName) {
-		strcpy(filename, hashString);
+		strlcpy(
+			filename,
+			hashString,
+			LENGTH_FILENAME
+		);
 	}
 	
-	strcat(filename, ".ppm");
+	strlcat(
+		filename,
+		".ppm",
+		LENGTH_FILENAME
+	);
 	return 0;
 }
 
