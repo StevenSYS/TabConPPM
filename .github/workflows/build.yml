@@ -1,0 +1,65 @@
+name: Build
+on: [push, pull_request]
+jobs:
+  build:
+    name: Build ${{matrix.build-targets.name}}
+    runs-on: ${{matrix.build-targets.os}}
+    strategy:
+      matrix:
+        build-targets:
+          - {
+            name: "Linux (x64)",
+            os: "ubuntu-latest",
+            cFlags: "",
+            uploadName: "TabConPPM-Linux64",
+            filename: "TabConPPM"
+          }
+          - {
+            name: "Windows (x64)",
+            os: "windows-latest",
+            cFlags: "",
+            uploadName: "TabConPPM-Win64",
+            filename: "TabConPPM.exe"
+          }
+          - {
+            name: "macOS (x64)",
+            os: "macos-13",
+            cFlags: "",
+            uploadName: "TabConPPM-Mac64",
+            filename: "TabConPPM"
+          }
+          - {
+            name: "macOS (arm64e)",
+            os: "macos-latest",
+            cFlags: "",
+            uploadName: "TabConPPM-MacARM",
+            filename: "TabConPPM"
+          }
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+      
+      - name: Update Package Lists (Linux)
+        if: ${{matrix.build-targets.os == 'ubuntu-latest'}}
+        run: sudo apt-get update
+      
+      - name: Configure CMake
+        run: >
+          cmake -S . -B build
+          -DCMAKE_C_COMPILER=gcc
+          -DCMAKE_BUILD_TYPE=Release
+          -DBUILD_SHARED_LIBS=OFF
+          -DCMAKE_C_FLAGS=${{matrix.build-targets.cFlags}}
+          -G "Unix Makefiles"
+      
+      - name: Build
+        run: cmake --build build
+      
+      - name: Test
+        run: build/${{matrix.build-targets.filename}}
+      
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{matrix.build-targets.uploadName}}
+          path: build/${{matrix.build-targets.filename}}

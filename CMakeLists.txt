@@ -26,13 +26,15 @@ if(BUILD_FOR_I586)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -march=i586 -fcf-protection=none")
 endif()
 
-if(BUILD_USING_MSVCRT20)
-	if(WIN32)
-		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mcrtdll=msvcrt20 -DMISSING_L_FUNCS")
-	else()
-		message(FATAL_ERROR "To build using msvcrt20 you must be using a Windows compiler")
+if(WIN32)
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DMISSING_L_FUNCS")
+	if(BUILD_USING_MSVCRT20)
+		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mcrtdll=msvcrt20")
 	endif()
+elseif(WIN32 AND BUILD_USING_MSVCRT20)
+	message(FATAL_ERROR "To build using msvcrt20 you must be using a Windows compiler")
 endif()
+
 
 file(GLOB SOURCE_FILES "src/*.c")
 
