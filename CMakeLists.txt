@@ -32,9 +32,8 @@ if(WIN32)
 		set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mcrtdll=msvcrt20")
 	endif()
 elseif(WIN32 AND BUILD_USING_MSVCRT20)
-	message(FATAL_ERROR "To build using msvcrt20 you must be using a Windows compiler")
+	message(FATAL_ERROR "To build using msvcrt20 you must be using a Windows C compiler")
 endif()
-
 
 file(GLOB SOURCE_FILES "src/*.c")
 
