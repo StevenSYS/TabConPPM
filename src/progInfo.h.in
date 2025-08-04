@@ -1,6 +1,7 @@
 #ifndef __PROGINFO__
 #define __PROGINFO__
 
+/* - Program - */
 #ifndef PROGRAM_PRE_RELEASE
 	#define PROGRAM_PRE_RELEASE 1
 #endif
@@ -12,8 +13,10 @@
 	#define PROGRAM_VERSION "@PROJECT_VERSION@"
 #endif
 
+/* - Default - */
 #define DEFAULT_SCALE 70
 
+/* - Length - */
 #define LENGTH_FILENAME 255
 #define LENGTH_HASHSTRING 255
 
