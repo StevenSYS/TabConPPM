@@ -19,6 +19,6 @@ char tabCon_generate(
 	const char *string
 );
 
-void tabCon_printHash(tabCon_t tabCon);
+void tabCon_printHash(const tabCon_t tabCon);
 
 #endif

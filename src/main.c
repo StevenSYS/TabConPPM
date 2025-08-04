@@ -7,12 +7,12 @@
 #include "tabConToPPM.h"
 #include "progInfo.h"
 
-char customFileName = 0;
-char filename[LENGTH_FILENAME];
-char hashString[LENGTH_HASHSTRING] = { 0 };
-char scale = DEFAULT_SCALE;
+static char customFileName = 0;
+static char filename[LENGTH_FILENAME];
+static char hashString[LENGTH_HASHSTRING] = { 0 };
+static char scale = DEFAULT_SCALE;
 
-tabCon_t tabCon;
+static tabCon_t tabCon;
 
 #ifdef MISSING_L_FUNCS
 	#define strlcpy(_src, _dst, _len) \

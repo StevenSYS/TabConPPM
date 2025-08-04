@@ -42,7 +42,7 @@ char tabCon_generate(
 	return 0;
 }
 
-void tabCon_printHash(tabCon_t tabCon) {
+void tabCon_printHash(const tabCon_t tabCon) {
 	for (unsigned char i = 0; i < TABCON_LENGTH_HASH; i++) {
 		printf("%02x", tabCon.hash[i]);
 	}

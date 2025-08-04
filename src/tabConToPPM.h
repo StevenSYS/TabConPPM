@@ -4,10 +4,10 @@
 #include <tabCon.h>
 
 char tabConToPPM(
-	char *filename,
-	tabCon_t tabCon,
-	unsigned char scale,
-	char *string
+	const char *filename,
+	const tabCon_t tabCon,
+	const unsigned char scale,
+	const char *string
 );
 
 #endif
