@@ -4,12 +4,12 @@
 #include "progInfo.h"
 
 char tabConToPPM(
-	char *fileName,
+	char *filename,
 	tabCon_t tabCon,
 	unsigned char scale,
 	char *string
 ) {
-	FILE *file = fopen(fileName, "wb");
+	FILE *file = fopen(filename, "wb");
 	unsigned char pixel;
 	
 	if (file == NULL) {
@@ -21,7 +21,7 @@ char tabConToPPM(
 	fprintf(file, "# Generated with " PROGRAM_NAME " v" PROGRAM_VERSION "\n");
 	fprintf(file, "# String: %s\n", string);
 	fprintf(file, "# Scale: %u\n", scale);
-	fprintf(file, "# Original Filename: %s\n", fileName);
+	fprintf(file, "# Original Filename: %s\n", filename);
 	fprintf(
 		file,
 		"%u %u\n",

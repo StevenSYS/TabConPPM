@@ -4,7 +4,7 @@
 #include <tabCon.h>
 
 char tabConToPPM(
-	char *fileName,
+	char *filename,
 	tabCon_t tabCon,
 	unsigned char scale,
 	char *string
