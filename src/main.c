@@ -81,6 +81,7 @@ char loadArgs(
 	}
 	
 	if (strlen(hashString) > LENGTH_HASHSTRING) {
+		fprintf(stderr, "ERROR: Hash string is too long\n");
 		return 1;
 	}
 	
@@ -106,20 +107,20 @@ int main(
 ) {
 	printf(PROGRAM_NAME " v" PROGRAM_VERSION "\n");
 	
+	printf("- Loading arguments\n");
+	
 	if (loadArgs(argc, argv)) {
-		fprintf(stderr, "ERROR: Failed to load arguments\n");
 		return 1;
 	}
+	
+	printf("- Loaded arguments\n");
 	
 	printf("- String: \"%s\"\n", hashString);
 	printf("- Scale: %ux\n", scale);
 	
 	printf("- Generating TabCon\n");
 	
-	if (tabCon_generate(&tabCon, hashString)) {
-		fprintf(stderr, "ERROR: Failed to generate TabCon\n");
-		return 1;
-	}
+	tabCon_generate(&tabCon, hashString);
 	
 	printf("- Generated TabCon\n");
 	printf("- Hash: \"");
@@ -134,7 +135,6 @@ int main(
 		scale,
 		hashString
 	)) {
-		fprintf(stderr, "ERROR: Failed to make PPM file\n");
 		return 1;
 	}
 	

@@ -14,7 +14,7 @@ typedef struct {
 	unsigned char color[3];
 } tabCon_t;
 
-char tabCon_generate(
+void tabCon_generate(
 	tabCon_t *tabCon,
 	const char *string
 );

@@ -4,7 +4,7 @@
 
 #include "tabCon.h"
 
-char tabCon_generate(
+void tabCon_generate(
 	tabCon_t *tabCon,
 	const char *string
 ) {
@@ -39,7 +39,7 @@ char tabCon_generate(
 	for (unsigned char i = TABCON_PIXELS; i < TABCON_PIXELS + 3; i++) {
 		tabCon->color[i - TABCON_PIXELS] = tabCon->hash[i];
 	}
-	return 0;
+	return;
 }
 
 void tabCon_printHash(const tabCon_t tabCon) {
