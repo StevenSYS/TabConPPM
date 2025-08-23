@@ -1,5 +1,5 @@
 # TabConPPM
-A simple command line [identicon](https://en.wikipedia.org/wiki/Identicon) generator written in C that is inspired by [GitHub's identicons](https://github.blog/news-insights/company-news/identicons/)
+A simple command line [identicon](https://en.wikipedia.org/wiki/Identicon) generator written in C, inspired by [GitHub's identicons](https://github.blog/news-insights/company-news/identicons/)
 
 # Examples
 
