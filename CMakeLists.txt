@@ -53,11 +53,7 @@ if(NOT BUILD_ONLY_LIBRARY)
 	configure_file(src/progInfo.h.in ${CMAKE_CURRENT_SOURCE_DIR}/src/progInfo.h @ONLY)
 	
 	add_executable(${PROJECT_NAME} ${SOURCE_FILES})
-	target_link_libraries(
-		${PROJECT_NAME}
-		SHA1
-		TabCon
-	)
+	target_link_libraries(${PROJECT_NAME} TabCon)
 	if(BUILD_FOR_DOS)
 		set_target_properties(${PROJECT_NAME} PROPERTIES OUTPUT_NAME "TABCNPPM")
 		set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".exe")
