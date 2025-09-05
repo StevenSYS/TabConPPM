@@ -59,6 +59,10 @@ jobs:
       - name: Test
         run: build/${{matrix.build-targets.filename}}
       
+      - name: Strip (macOS)
+        if: contains(matrix.build-targets.os, 'macos')
+        run: strip build/${{matrix.build-targets.filename}}
+      
       - uses: actions/upload-artifact@v4
         with:
           name: ${{matrix.build-targets.uploadName}}
