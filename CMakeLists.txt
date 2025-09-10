@@ -20,7 +20,6 @@ endif()
 
 if(BUILD_FOR_DOS)
 	set(CMAKE_C_COMPILER "i586-pc-msdosdjgpp-gcc")
-	set(CMAKE_CXX_COMPILER "i586-pc-msdosdjgpp-g++")
 	set(BUILD_SHARED_LIBS OFF)
 	set(BUILD_FOR_I586 OFF)
 endif()

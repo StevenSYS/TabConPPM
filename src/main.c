@@ -57,6 +57,7 @@ char loadArgs(
 							LENGTH_HASHSTRING
 						);
 					}
+					
 					strlcat(
 						hashString,
 						argv[i],
@@ -117,6 +118,7 @@ int main(
 	
 	printf("- String: \"%s\"\n", hashString);
 	printf("- Scale: %ux\n", scale);
+	printf("- Output: \"%s\"\n", filename);
 	
 	printf("- Generating TabCon\n");
 	
@@ -139,6 +141,5 @@ int main(
 	}
 	
 	printf("- Made PPM file\n");
-	printf("- Filename: \"%s\"\n", filename);
 	return 0;
 }
