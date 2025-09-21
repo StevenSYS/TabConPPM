@@ -40,13 +40,9 @@ jobs:
         with:
           submodules: 'true'
       
-      - name: Update Package Lists (Linux)
-        if: ${{matrix.build-targets.os == 'ubuntu-latest'}}
-        run: sudo apt-get update
-      
       - name: Configure CMake
         run: >
-          cmake -S . -B build
+          cmake -S .
           -DCMAKE_C_COMPILER=gcc
           -DCMAKE_BUILD_TYPE=Release
           -DBUILD_SHARED_LIBS=OFF
@@ -54,16 +50,18 @@ jobs:
           -G "Unix Makefiles"
       
       - name: Build
-        run: cmake --build build
+        run: cmake --build .
       
       - name: Test
-        run: build/${{matrix.build-targets.filename}}
+        run: ./${{matrix.build-targets.filename}}
       
       - name: Strip (macOS)
         if: contains(matrix.build-targets.os, 'macos')
-        run: strip build/${{matrix.build-targets.filename}}
+        run: strip ${{matrix.build-targets.filename}}
       
       - uses: actions/upload-artifact@v4
         with:
           name: ${{matrix.build-targets.uploadName}}
-          path: build/${{matrix.build-targets.filename}}
+          path: |
+            ${{matrix.build-targets.filename}}
+            LICENSE
