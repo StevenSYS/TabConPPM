@@ -23,7 +23,7 @@ jobs:
           }
           - {
             name: "macOS (x64)",
-            os: "macos-13",
+            os: "macos-15-intel",
             cFlags: "",
             uploadName: "TabConPPM-Mac64",
             filename: "TabConPPM"
