@@ -44,7 +44,6 @@ include_directories(
 	"src/libTabCon"
 )
 
-add_subdirectory(src/submodules)
 add_subdirectory(src/libTabCon)
 
 if(NOT BUILD_ONLY_LIBRARY)

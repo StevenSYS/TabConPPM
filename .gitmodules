@@ -1,3 +1,3 @@
-[submodule "src/submodules/sha1"]
-	path = src/submodules/sha1
+[submodule "src/libTabCon/sha1"]
+	path = src/libTabCon/sha1
 	url = https://github.com/clibs/sha1

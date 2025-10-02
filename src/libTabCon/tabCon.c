@@ -24,8 +24,8 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <sha1/sha1.h>
 
+#include "sha1/sha1.h"
 #include "tabCon.h"
 
 void tabCon_generate(
@@ -60,6 +60,7 @@ void tabCon_generate(
 		}
 	}
 	
+	/* Set image color */
 	for (unsigned char i = TABCON_PIXELS; i < TABCON_PIXELS + 3; i++) {
 		tabCon->color[i - TABCON_PIXELS] = tabCon->hash[i];
 	}
