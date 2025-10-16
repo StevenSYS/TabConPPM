@@ -47,11 +47,11 @@ static tabCon_t tabCon;
 		_src[sizeof(_src) - 1] = 0;
 #endif
 
-char loadArgs(
-	int argc,
-	char *argv[]
-) {
-	for (int i = 0; i < argc; i++) {
+static inline char loadArgs(int argc, char *argv[]) {
+	int i;
+	unsigned char j;
+	
+	for (i = 0; i < argc; i++) {
 		if (argv[i] != NULL) {
 			switch (i) {
 				case 0:
@@ -95,7 +95,7 @@ char loadArgs(
 	if (!strlen(hashString)) {
 		srand(time(NULL));
 		char randomChar[2];
-		for (unsigned char i = 0; i < 9; i++) {
+		for (j = 0; j < 9; j++) {
 			snprintf(randomChar, 2, "%u", rand() % 9);
 			strlcat(
 				hashString,
@@ -126,10 +126,7 @@ char loadArgs(
 	return 0;
 }
 
-int main(
-	int argc,
-	char *argv[]
-) {
+int main(int argc, char *argv[]) {
 	printf(PROGRAM_NAME " v" PROGRAM_VERSION "\n");
 	printf("Created by StevenSYS\n");
 	

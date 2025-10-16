@@ -32,6 +32,8 @@ void tabCon_generate(
 	tabCon_t *tabCon,
 	const char *string
 ) {
+	unsigned char x, y, i;
+	
 	/* Calculate hash */
 	SHA1_CTX context;
 	
@@ -44,8 +46,8 @@ void tabCon_generate(
 	SHA1Final(tabCon->hash, &context);
 	
 	/* Convert hash to image */
-	for (unsigned char y = 0; y < TABCON_HEIGHT; y++) {
-		for (unsigned char x = 0; x < TABCON_WIDTH; x++) {
+	for (y = 0; y < TABCON_HEIGHT; y++) {
+		for (x = 0; x < TABCON_WIDTH; x++) {
 			tabCon->data[
 				TABCON_POSITION(x, y, TABCON_MIRRORWIDTH)
 			] = tabCon->data[
@@ -61,14 +63,15 @@ void tabCon_generate(
 	}
 	
 	/* Set image color */
-	for (unsigned char i = TABCON_PIXELS; i < TABCON_PIXELS + 3; i++) {
+	for (i = TABCON_PIXELS; i < TABCON_PIXELS + 3; i++) {
 		tabCon->color[i - TABCON_PIXELS] = tabCon->hash[i];
 	}
 	return;
 }
 
 void tabCon_printHash(const tabCon_t tabCon) {
-	for (unsigned char i = 0; i < TABCON_LENGTH_HASH; i++) {
+	unsigned char i;
+	for (i = 0; i < TABCON_LENGTH_HASH; i++) {
 		printf("%02x", tabCon.hash[i]);
 	}
 	return;

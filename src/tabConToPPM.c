@@ -33,8 +33,12 @@ char tabConToPPM(
 	const unsigned char scale,
 	const char *string
 ) {
-	FILE *file = fopen(filename, "wb");
+	unsigned char x2, y2, i;
+	unsigned short x, y;
+	
 	unsigned char pixel;
+	
+	FILE *file = fopen(filename, "wb");
 	
 	if (file == NULL) {
 		perror("ERROR: Failed to open PPM file (wb Mode)");
@@ -53,11 +57,11 @@ char tabConToPPM(
 	);
 	fprintf(file, "255\n");
 	
-	for (unsigned short y = 0; y < TABCON_HEIGHT; y++) {
-		for (unsigned char y2 = 0; y2 < scale; y2++) {
-			for (unsigned short x = 0; x < TABCON_MIRRORWIDTH; x++) {
-				for (unsigned char x2 = 0; x2 < scale; x2++) {
-					for (unsigned char i = 0; i < 3; i++) {
+	for (y = 0; y < TABCON_HEIGHT; y++) {
+		for (y2 = 0; y2 < scale; y2++) {
+			for (x = 0; x < TABCON_MIRRORWIDTH; x++) {
+				for (x2 = 0; x2 < scale; x2++) {
+					for (i = 0; i < 3; i++) {
 						pixel = (
 							tabCon.data[
 								TABCON_POSITION(x, y, TABCON_MIRRORWIDTH)
