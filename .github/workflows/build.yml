@@ -11,28 +11,28 @@ jobs:
             name: "Linux (x64)",
             os: "ubuntu-latest",
             cFlags: "",
-            uploadName: "TabConPPM-Linux64",
+            uploadName: "TabConPPM-Linux_x64",
             filename: "TabConPPM"
           }
           - {
             name: "Windows (x64)",
             os: "windows-latest",
             cFlags: "",
-            uploadName: "TabConPPM-Win64",
+            uploadName: "TabConPPM-Win_x64",
             filename: "TabConPPM.exe"
           }
           - {
             name: "macOS (x64)",
             os: "macos-15-intel",
             cFlags: "",
-            uploadName: "TabConPPM-Mac64",
+            uploadName: "TabConPPM-Mac_x64",
             filename: "TabConPPM"
           }
           - {
             name: "macOS (arm64e)",
             os: "macos-latest",
             cFlags: "",
-            uploadName: "TabConPPM-MacARM",
+            uploadName: "TabConPPM-Mac_arm64e",
             filename: "TabConPPM"
           }
     steps:
