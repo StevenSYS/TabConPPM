@@ -28,7 +28,7 @@
 void tabCon_generate(
 	tabCon_t *tabCon,
 	const char *string,
-	const int length
+	const unsigned int length
 ) {
 	unsigned char x, y, i;
 	

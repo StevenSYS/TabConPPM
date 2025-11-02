@@ -48,8 +48,9 @@ static tabCon_t tabCon;
 #endif
 
 static inline char loadArgs(int argc, char *argv[]) {
-	int i;
+	char randomChar[2];
 	unsigned char j;
+	int i;
 	
 	for (i = 0; i < argc; i++) {
 		if (argv[i] != NULL) {
@@ -94,7 +95,7 @@ static inline char loadArgs(int argc, char *argv[]) {
 	
 	if (!strlen(hashString)) {
 		srand(time(NULL));
-		char randomChar[2];
+		
 		for (j = 0; j < 9; j++) {
 			snprintf(randomChar, 2, "%u", rand() % 9);
 			strlcat(
