@@ -22,15 +22,13 @@
 	SOFTWARE.
 */
 
-#include <stdio.h>
-#include <string.h>
-
 #include "sha1/sha1.h"
 #include "tabCon.h"
 
 void tabCon_generate(
 	tabCon_t *tabCon,
-	const char *string
+	const char *string,
+	const int length
 ) {
 	unsigned char x, y, i;
 	
@@ -41,7 +39,7 @@ void tabCon_generate(
 	SHA1Update(
 		&context,
 		(const unsigned char *)string,
-		strlen(string)
+		length
 	);
 	SHA1Final(tabCon->hash, &context);
 	
@@ -65,14 +63,6 @@ void tabCon_generate(
 	/* Set image color */
 	for (i = TABCON_PIXELS; i < TABCON_PIXELS + 3; i++) {
 		tabCon->color[i - TABCON_PIXELS] = tabCon->hash[i];
-	}
-	return;
-}
-
-void tabCon_printHash(const tabCon_t tabCon) {
-	unsigned char i;
-	for (i = 0; i < TABCON_LENGTH_HASH; i++) {
-		printf("%02x", tabCon.hash[i]);
 	}
 	return;
 }

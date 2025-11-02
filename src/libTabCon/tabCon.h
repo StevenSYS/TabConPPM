@@ -40,9 +40,8 @@ typedef struct {
 
 void tabCon_generate(
 	tabCon_t *tabCon,
-	const char *string
+	const char *string,
+	const int length
 );
-
-void tabCon_printHash(const tabCon_t tabCon);
 
 #endif

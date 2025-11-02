@@ -127,8 +127,10 @@ static inline char loadArgs(int argc, char *argv[]) {
 }
 
 int main(int argc, char *argv[]) {
+	unsigned char i;
+	
 	printf(PROGRAM_NAME " v" PROGRAM_VERSION "\n");
-	printf("Created by StevenSYS\n");
+	printf("Created by StevenSYS - 2025\n");
 	
 	printf("- Loading arguments\n");
 	
@@ -144,11 +146,19 @@ int main(int argc, char *argv[]) {
 	
 	printf("- Generating TabCon\n");
 	
-	tabCon_generate(&tabCon, hashString);
+	tabCon_generate(
+		&tabCon,
+		hashString,
+		strlen(hashString)
+	);
 	
 	printf("- Generated TabCon\n");
 	printf("- Hash: \"");
-	tabCon_printHash(tabCon);
+	
+	for (i = 0; i < TABCON_LENGTH_HASH; i++) {
+		printf("%02x", tabCon.hash[i]);
+	}
+	
 	printf("\"\n");
 	
 	printf("- Making PPM file\n");
